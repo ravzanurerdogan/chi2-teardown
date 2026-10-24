@@ -1,4 +1,4 @@
-# gpower-clone: χ² olumsallık tablosu güç analizi (YZM301 Teardown Sprint, 7. grup, K4)
+# gpower-clone: χ² olumsallık tablosu güç analizi (YZM301 Teardown Sprint, 7. grup, K4, bireysel çalışma)
 
 **Yapılan katman: yalnızca temel katman (CLI).** MCP sunucusu ve AI ajanı bonus katmanları yapılmadı.
 
@@ -11,9 +11,9 @@ Bu çalışma, G*Power'ı ücretsiz sunan yazarların emeğine saygıyla, yalnı
 - Faul, F., Erdfelder, E., Lang, A.-G., & Buchner, A. (2007). G*Power 3: A flexible statistical power analysis program for the social, behavioral, and biomedical sciences. *Behavior Research Methods, 39*, 175–191.
 - Faul, F., Erdfelder, E., Buchner, A., & Lang, A.-G. (2009). Statistical power analyses using G*Power 3.1: Tests for correlation and regression analyses. *Behavior Research Methods, 41*, 1149–1160.
 
-## Takım
+## Yazar
 
-[AD SOYAD, AD SOYAD, ...] · Konu: K4, χ² testi, olumsallık tablosu · Ders: YZM301
+[RAVZANUR ERDOĞAN], bireysel çalışma · 7. grup · Konu: K4, χ² testi, olumsallık tablosu · Ders: YZM301
 
 ## Kapsam
 
