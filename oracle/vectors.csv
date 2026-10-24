@@ -1,0 +1,51 @@
+id,test,mode,w,alpha,power,df,ncp,critical_chi2,n_total,actual_power,note
+v001,chi2-contingency,a-priori,0.3,0.05,0.95,2,15.4800000,5.9914645,172,0.9504692,
+v002,chi2-contingency,a-priori,0.3,0.05,0.95,1,13.0500000,3.8414588,145,0.9507851,
+v003,chi2-contingency,a-priori,0.3,0.05,0.95,3,17.1900000,7.8147279,191,0.9502399,
+v004,chi2-contingency,a-priori,0.3,0.05,0.95,4,18.6300000,9.4877290,207,0.9506581,
+v005,chi2-contingency,a-priori,0.1,0.05,0.95,2,15.4500000,5.9914645,1545,0.9500866,
+v006,chi2-contingency,a-priori,0.5,0.05,0.95,2,15.5000000,5.9914645,62,0.9507228,
+v007,chi2-contingency,a-priori,0.3,0.01,0.95,2,20.7000000,9.2103404,230,0.9505563,
+v008,chi2-contingency,a-priori,0.3,0.10,0.95,2,13.0500000,4.6051702,145,0.9503684,
+v009,chi2-contingency,a-priori,0.3,0.05,0.80,2,9.7200000,5.9914645,108,0.8036939,
+v010,chi2-contingency,a-priori,0.3,0.05,0.90,2,12.6900000,5.9914645,141,0.9008626,
+v011,chi2-contingency,a-priori,0.3,0.05,0.99,2,21.4200000,5.9914645,238,0.9900681,
+v012,chi2-contingency,a-priori,0.3,0.05,0.95,6,20.8800000,12.5915872,232,0.9502375,
+v013,chi2-contingency,a-priori,0.3,0.05,0.95,10,24.3900000,18.3070381,271,0.9500419,
+v014,chi2-contingency,a-priori,0.05,0.05,0.95,2,15.4450000,5.9914645,6178,0.9500226,
+v015,chi2-contingency,a-priori,0.01,0.05,0.95,2,15.4433000,5.9914645,154433,0.9500008,
+v016,chi2-contingency,a-priori,0.9,0.05,0.95,2,16.2000000,5.9914645,20,0.9588793,
+v017,chi2-contingency,a-priori,1.0,0.05,0.95,2,16.0000000,5.9914645,16,0.9566863,
+v018,chi2-contingency,a-priori,0.3,0.001,0.95,2,27.6300000,13.8155106,307,0.9508431,
+v019,chi2-contingency,a-priori,0.3,0.05,0.06,2,0.1800000,5.9914645,2,0.0637738,
+v020,chi2-contingency,a-priori,0.3,0.05,0.05,2,0.0900000,5.9914645,1,0.0568148,power equals alpha accepted
+v021,chi2-contingency,a-priori,0.3,0.05,0.04,2,,,,,error: power must be greater than or equal to alpha
+v022,chi2-contingency,a-priori,0.000001,0.05,0.95,2,15.4432356,5.9914645,,0.9500000,N displayed as 1.5443e+13 (5 digits only)
+v023,chi2-contingency,a-priori,0.0000011,0.05,0.95,2,15.4432356,5.9914645,,0.9500000,N displayed as 1.2763e+13 (5 digits only)
+v024,chi2-contingency,a-priori,0,0.05,0.95,2,,,,,error: effect size w must be greater 1e-06
+v025,chi2-contingency,a-priori,-0.3,0.05,0.95,2,,,,,error: effect size w must be greater 1e-06
+v026,chi2-contingency,a-priori,0.3,0.05,0.95,0,,,,,error: degrees of freedom must be greater or equal one
+v027,chi2-contingency,a-priori,0.3,0,0.95,2,,,,,error: alpha is outside the admissible range (1e-07)
+v028,chi2-contingency,a-priori,0.3,1,0.95,2,,,,,error: alpha is outside the admissible range (1e-07)
+v029,chi2-contingency,post-hoc,0.3,0.05,,2,9.0000000,5.9914645,100,0.7706831,power is the computed output
+v030,chi2-contingency,post-hoc,0.1,0.05,,2,2.0000000,5.9914645,200,0.2255449,power is the computed output
+v031,chi2-contingency,post-hoc,0.5,0.05,,4,12.5000000,9.4877290,50,0.8203819,power is the computed output
+v032,chi2-contingency,post-hoc,0.3,0.05,,2,0.9000000,5.9914645,10,0.1238530,power is the computed output
+v033,chi2-contingency,a-priori,0.0000005,0.05,0.95,2,,,,,error: effect size w must be greater 1e-06
+v034,chi2-contingency,a-priori,0.0000009999,0.05,0.95,2,,,,,error: effect size w must be greater 1e-06
+v035,chi2-contingency,a-priori,0.0000010001,0.05,0.95,2,15.4432356,5.9914645,,0.9500000,N displayed as 1.544e+13
+v036,chi2-contingency,a-priori,0.3,0.0000001,0.95,2,52.5600000,32.2361913,584,0.9505492,
+v037,chi2-contingency,a-priori,0.3,0.00000011,0.95,2,52.2900000,32.0455709,581,0.9503838,
+v038,chi2-contingency,a-priori,0.3,0.9999999,0.95,2,,,,,error: power must be greater than or equal to alpha
+v039,chi2-contingency,a-priori,0.3,0.5,0.95,2,6.3900000,1.3862944,71,0.9510871,
+v040,chi2-contingency,a-priori,0.3,0.05,0.9999999,2,56.7900000,5.9914645,631,0.9999999,
+v041,chi2-contingency,a-priori,0.3,0.9,0.95,2,1.5300000,0.2107210,17,0.9515995,
+v042,chi2-contingency,a-priori,0.3,0.99,0.95,2,,,,,error: power must be greater than or equal to alpha
+v043,chi2-contingency,a-priori,0.3,0.999999,0.95,2,,,,,error (message not recorded)
+v044,chi2-contingency,a-priori,0.3,0.0000000999,0.95,2,,,,,error: alpha is outside the admissible range (1e-07)
+v045,chi2-contingency,a-priori,0.3,0.05,1,2,,,,,error: power is outside the admissible range (1e-07)
+v046,chi2-contingency,a-priori,0.3,0.05,0.99999999,2,,,,,error: power is outside the admissible range (1e-07)
+v047,chi2-contingency,a-priori,0.3,0.05,0.95,100,56.8800000,124.3421134,632,0.9501569,critical shown as 124.3421 on screen (last digits from scipy)
+v048,chi2-contingency,a-priori,5,0.05,0.95,2,25.0000000,5.9914645,1,0.9964734,
+v049,chi2-contingency,a-priori,0.3,0.95,0.95,2,0.0900000,0.1025866,1,0.9521454,
+v050,chi2-contingency,a-priori,0.3,0.9999999,0.9999999,2,0.0900000,0.0000002,1,0.9999999,critical shown as 2e-07

@@ -1,0 +1,8 @@
+GPower*.exe
+GPowerNT.exe
+VC_redist.x86.exe
+*.wav
+*.snapshot.json
+__pycache__/
+*.pyc
+.pytest_cache/
