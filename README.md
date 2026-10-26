@@ -41,8 +41,8 @@ Sürüm: `python src/gpower-clone --version`
 
 ```
 pip install -r src/requirements.txt pytest statsmodels
-set PYTHONPATH=src
-python -m pytest tests/test_chi2_spec.py
+$env:PYTHONPATH="src"   # PowerShell. cmd.exe icin: set PYTHONPATH=src
+python -m pytest tests -q
 python tests/run_differential.py --cmd "python src/gpower-clone" --n-random 500 --wide 300
 ```
 
@@ -50,7 +50,7 @@ Sonuçlar (ayrıntı: `tests/uyum_raporu.md`):
 
 | Test | Sonuç |
 |---|---|
-| SPEC.md'den türetilen pytest | 106/106 geçti |
+| pytest (SPEC.md'den türetilen testler ve matematik karşılaştırması) | 287/287 geçti |
 | Oracle (G*Power arayüzünden okunan 50 vektör, sınır ve hata dahil) | 50/50 tam eşleşme |
 | statsmodels ile bağımsız 500 rastgele vektör (N = yukarı yuvarlanmış kesirli N) | 500/500 tam eşleşme |
 | scipy ile 300 uç değerli vektör (alpha 1e-7..0.5, df ..500, w 0.001..2) | 298 tam eşleşme, 1 uyarı, 1 fark (iki satır da N ≥ 7e7 ve güç ≥ 0.999998 uç durumunda 1-2 birimlik sapma, açıklama: `tests/UYUM_ACIKLAMALARI.md`) |
