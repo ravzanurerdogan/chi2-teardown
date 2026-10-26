@@ -31,3 +31,6 @@ Oturum 2 yalnızca `SPEC.md` ile başladı, Ghidra çıktısını görmedi. Aray
 
 Kod ilk hâlinde Windows'ta soğuk ilk çağrıda 1,98 s sürüyordu (sınır 2 s, süreç başlangıcı dahil). Kodu yazan Claude oturumuna başlatma süresini azaltma isteği verildi. Sonuç: 550 çağrının en yavaşı 0,21 s, 106 test 1,55 s. Bu iterasyonda ajan merkezi ve merkezsiz χ² dağılım fonksiyonlarını scipy'siz (yalnızca `math`, `decimal`) yeniden yazdı; scipy yalnızca testlerde kaldı. Sayısal sonuçlar değişmedi (oracle 50/50, statsmodels 500/500). Ölçümü ancak teslimden birkaç gün önce yaptık, daha erken ölçseydik bu iterasyonu atlardık.
 
+## MCP katmanı
+
+Aynı Claude oturumuna, mevcut motoru çağıran tek dosyalık bir MCP adaptörü (`src/mcp_server.py`, resmi `mcp` paketi) ve CLI ile eşdeğerlik testleri yazdırıldı. Token sayısı ölçülmedi.

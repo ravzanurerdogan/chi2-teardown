@@ -1,6 +1,6 @@
 # gpower-clone: χ² olumsallık tablosu güç analizi (YZM301 Teardown Sprint, 7. grup, K4, bireysel çalışma)
 
-**Yapılan katman: yalnızca temel katman (CLI).** MCP sunucusu ve AI ajanı bonus katmanları yapılmadı.
+**Yapılan katmanlar: temel katman (CLI) ve +15 MCP sunucusu.** AI ajanı bonus katmanı yapılmadı.
 
 > **Bu yazılım G*Power değildir.** G*Power'ın yazarlarıyla ya da dağıtımıyla ilgisi yoktur ve onun yerine geçmez. G*Power yalnızca davranışını gözlemlediğimiz bir referans (kâhin) olarak kullanıldı. Komutun adı (`gpower-clone`) ders sözleşmesi (CONTRACT.md) tarafından zorunlu tutulduğu için böyledir. Hesap, yayımlanmış yöntemlerden ve gözlenen davranıştan bağımsız olarak yeniden yazıldı. Repoda G*Power'ın çalıştırılabilir dosyası ya da decompile çıktısı yoktur.
 
@@ -41,7 +41,7 @@ Sürüm: `python src/gpower-clone --version`
 
 ```
 pip install -r src/requirements.txt pytest statsmodels
-$env:PYTHONPATH="src"   # PowerShell. cmd.exe icin: set PYTHONPATH=src
+$env:PYTHONPATH="src"   # PowerShell. cmd.exe icin: $env:PYTHONPATH="src"   # PowerShell. cmd.exe icin: set PYTHONPATH=src
 python -m pytest tests -q
 python tests/run_differential.py --cmd "python src/gpower-clone" --n-random 500 --wide 300
 ```
@@ -92,6 +92,38 @@ Oturum 1 (söküm, Antigravity + REA + Ghidra) yalnızca `SPEC.md` ve `LEDGER.md
 Bağımsız doğrulama (terminalde `npx rea-agents capabilities`, Ghidra ve Java kontrolleri `true`):
 
 ![capabilities](docs/screenshots/01-capabilities-ghidra-checks.png)
+
+## MCP sunucusu (+15 katmanı)
+
+Tek araç: `power_analysis`. Hesap mantığı MCP katmanında yoktur; `src/mcp_server.py` motoru (`gpower_clone.engine`) çağıran ince bir adaptördür. Çıktı, CLI'nin stdout'undaki tek satır JSON ile aynıdır ve metin içeriği olarak döner. Hata durumunda istisna değil, aynı hata JSON'u (`error`, `code`, `field`) döner.
+
+```
+pip install mcp
+python src/mcp_server.py        # stdio üzerinden çalışır
+```
+
+İstemci kaydı örneği:
+
+```
+{"mcpServers": {"gpower-clone": {"command": "python", "args": ["C:/yol/gpower-chi2/src/mcp_server.py"]}}}
+```
+
+**Girdi şeması** (alan adları CLI ile aynıdır; doğrulamayı motor yapar):
+
+| Alan | Tür | Ne zaman gerekli |
+|---|---|---|
+| `test` | metin | her zaman (`chi2-contingency`) |
+| `mode` | metin | her zaman (`a-priori`, `post-hoc`; diğerleri `UNSUPPORTED` döner) |
+| `w` | sayı | a-priori, post-hoc |
+| `alpha` | sayı | a-priori, post-hoc |
+| `power` | sayı | yalnızca a-priori |
+| `n_total` | tam sayı | yalnızca post-hoc |
+| `df` | tam sayı | a-priori, post-hoc |
+| `beta_alpha_ratio` | sayı | yalnızca compromise (uygulanmadı) |
+
+**Çıktı alanları:** a-priori için `ncp`, `critical_chi2`, `n_total`, `actual_power`; post-hoc için `ncp`, `critical_chi2`, `power`; hata için `error`, `code`, `field`.
+
+**Eşdeğerlik testleri:** `tests/test_mcp_equivalence.py`, `oracle/vectors.csv`'deki 50 vektör, sözleşmenin açık vektörleri ve geçersiz girdiler için araç çıktısının CLI çıktısıyla birebir aynı olduğunu sınar.
 
 ## Demo
 

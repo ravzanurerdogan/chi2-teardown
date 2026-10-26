@@ -1,4 +1,8 @@
-"""İnce CLI katmanı: argv -> sözlük -> engine.execute -> tek satır JSON."""
+"""İnce CLI katmanı: argv -> sözlük -> engine.execute -> tek satır JSON.
+
+JSON üretimi ve hata dönüşümü `run_params` / `run` içinde tek yerdedir; MCP sunucusu
+(src/mcp_server.py) aynı `run_params` fonksiyonunu kullanır, böylece iki yolun çıktısı birebir aynıdır.
+"""
 from __future__ import annotations
 
 import json
@@ -34,23 +38,42 @@ def parse_args(argv: list) -> dict:
     return params
 
 
-def main(argv: list | None = None) -> int:
-    argv = sys.argv[1:] if argv is None else argv
+def _guarded(compute) -> tuple[int, str]:
+    """compute() bir JSON metni döndürür. İstisnalar hata JSON'una çevrilir.
+
+    Dönüş: (çıkış kodu, stdout'a yazılacak tek satır JSON; satır sonu hariç).
+    """
     try:
-        if argv == ["--version"]:
-            print(json.dumps(_version()))
-            return 0
-        print(json.dumps(execute(parse_args(argv))))
-        return 0
+        return 0, compute()
     except GPowerError as e:
-        print(json.dumps(e.to_dict()))
-        return e.exit_code
+        return e.exit_code, json.dumps(e.to_dict())
     except Exception as e:  # beklenmeyen durum: çıkış kodu 1
         import traceback
 
         traceback.print_exc(file=sys.stderr)
-        print(json.dumps({"error": f"Beklenmeyen iç hata: {e}", "code": "INTERNAL"}))
-        return 1
+        return 1, json.dumps({"error": f"Beklenmeyen iç hata: {e}", "code": "INTERNAL"})
+
+
+def run_params(params: dict) -> tuple[int, str]:
+    """Ham metin değerli alan sözlüğünü motora verir (CLI ve MCP ortak yolu)."""
+    return _guarded(lambda: json.dumps(execute(params)))
+
+
+def run(argv: list) -> tuple[int, str]:
+    """argv'yi çalıştırır; (çıkış kodu, tek satır JSON) döner."""
+    def compute() -> str:
+        if argv == ["--version"]:
+            return json.dumps(_version())
+        return json.dumps(execute(parse_args(argv)))
+
+    return _guarded(compute)
+
+
+def main(argv: list | None = None) -> int:
+    argv = sys.argv[1:] if argv is None else argv
+    code, line = run(argv)
+    print(line)
+    return code
 
 
 if __name__ == "__main__":
